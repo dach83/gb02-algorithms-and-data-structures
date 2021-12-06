@@ -1,0 +1,70 @@
+1. Прочитать в книге "Грокаем алгоритмы" или в предложенных материалах про алгоритмы и О-большое.
+2. Определить сложность следующих алгоритмов:
+
+- O(1). Поиск элемента массива с известным индексом
+- O(n). Дублирование одномерного массива через foreach
+- O(1). Удаление элемента массива с известным индексом без сдвига
+- O(n). Удаление элемента массива с неизвестным индексом без сдвига
+- O(n). Удаление элемента массива с неизвестным индексом со сдвига
+
+3. Определить сложность следующих алгоритмов. Сколько произойдет итераций?
+
+a) O(n*log(n)) - внешний цикл выполняется за O(n), а внутренний за O(log(n))
+
+        int n = 10000;
+        List<Integer> arrayList = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            for (int j = 1; j < n; j *= 2) {
+                arrayList.add(i * j);
+            }
+        }
+
+b) O(n^2) - внешний цикл выполняется за O(n/2), внутренний цикл в среднем будет выполнятся тоже O(n/2)
+
+        int n = 10000;
+        List<Integer> arrayList = new ArrayList<>();
+        for (int i = 0; i < n; i += 2) {
+            for (int j = i; j < n; j++) {
+                arrayList.add(i * j);
+            }
+        }
+
+с) O(n*log(n)) - во внутреннем цикле n каждый раз сокращается в 2 раза, сложность внутреннего цикла O(n/2),
+                 а внешнего O(log(n))
+
+        int n = 10000;
+        List<Integer> arrayList = new ArrayList<>();
+        for (int i = 0; i < n; i ++) {
+            for (int j = 0; j < n; j++) {
+                arrayList.add(i * j);
+                n--;
+            }
+        }
+
+d) O(n) - на каждой итерации n уменьшается на 1, это можно проделать n раз
+
+factorial(BigInteger.valueOf(10000))
+
+public static BigInteger factorial(BigInteger n) {
+    if (n.equals(BigInteger.ONE)) {
+        return n;
+    }
+    return n.multiply(factorial(n.subtract(BigInteger.valueOf(1))));
+}
+
+
+e) O(2^n) - алгоритм строит двоичное дерево высоты n, на каждом k-ом уровне будет 2^k узлов,
+            т.е. сложность ~ O(n*2^n) = O(2^n)
+
+fib(BigInteger.valueOf(50));
+
+public static BigInteger fib(BigInteger n) {
+    if (n.equals(BigInteger.ONE)) {
+        return BigInteger.ONE;
+    }
+    if (n.equals(BigInteger.TWO)) {
+        return BigInteger.ONE;
+    }
+    return fib(n.subtract(BigInteger.ONE)).add(fib(n.subtract(BigInteger.TWO)));
+}
+
