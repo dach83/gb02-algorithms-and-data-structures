@@ -19,9 +19,9 @@ public class BagPacker {
 
     private void putThingsToBag(int startInd, Bag bag, Thing... things) {
         for (int i = startInd; i < things.length; i++) {
-            if (bag.getWeight()+things[i].getWeight() <= maxWeight && bag.put(things[i])) {
+            if (bag.getWeight() + things[i].getWeight() <= maxWeight && bag.put(things[i])) {
                 System.out.println(bag);
-                putThingsToBag(i+1, bag, things);
+                putThingsToBag(i + 1, bag, things);
                 if (bestPriceBag.getPrice() < bag.getPrice())
                     bestPriceBag = new Bag(bag); // запомним рюкзак с максимальной стоимостью
                 bag.remove(things[i]);

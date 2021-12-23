@@ -40,12 +40,6 @@ public class Bag {
         return false;
     }
 
-    public void printThings() {
-        things.stream()
-                .sorted()
-                .forEach(System.out::println);
-    }
-
     @Override
     public String toString() {
         return String.format("%d - %d : %s", price, weight, things.toString());

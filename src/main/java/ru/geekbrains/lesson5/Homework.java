@@ -19,5 +19,4 @@ public class Homework {
         Bag bag = BagPacker.pack(150, things);
         System.out.println("Bag with best price: " + bag);
     }
-
 }
