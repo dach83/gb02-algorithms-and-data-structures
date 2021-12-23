@@ -4,7 +4,7 @@ public class Homework {
 
     public static void main(String[] args) {
         testPow();
-        testBackPack();
+        testBagPacker();
     }
 
     private static void testPow() {
@@ -14,11 +14,10 @@ public class Homework {
         }
     }
 
-    private static void testBackPack() {
-        Thing[] things = Thing.randomArray(10);
-        Bag bag = BagPacker.pack(300, things);
-        System.out.println(bag);
-        bag.printThings();
+    private static void testBagPacker() {
+        Thing[] things = Thing.randomArray(3);
+        Bag bag = BagPacker.pack(150, things);
+        System.out.println("Bag with best price: " + bag);
     }
 
 }
